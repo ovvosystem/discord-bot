@@ -19,7 +19,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith('anya hello'):
-        await message.channel.send('Hello!')
+    if message.content.startswith('anya hug'):
+        gif = hug_gif()
+        await message.channel.send(file=discord.File(gif))
+
+def hug_gif():
+    return os.path.join("gifs", "hugs", "hug1.gif")
+
 
 client.run(TOKEN)
