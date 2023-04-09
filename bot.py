@@ -1,6 +1,7 @@
 import os
 import discord
 from dotenv import load_dotenv
+from random import randint
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -24,7 +25,11 @@ async def on_message(message):
         await message.channel.send(file=discord.File(gif))
 
 def hug_gif():
-    return os.path.join("gifs", "hugs", "hug1.gif")
+    path = os.path.join("gifs", "hugs")
+    gif_list = os.listdir(path)
+    gif = gif_list[randint(0, len(gif_list)-1)]
+    return os.path.join(path, gif)
+
 
 
 client.run(TOKEN)
